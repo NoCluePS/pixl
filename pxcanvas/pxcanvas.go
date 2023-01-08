@@ -58,7 +58,7 @@ func NewPxCanvas(state *apptype.State, config apptype.PxCanvasConfig) *PxCanvas 
 		PxCanvasConfig: config,
 		appState: state,
 	}
-	pxCanvas.PixelData = NewBlankImage(pxCanvas.PxCols, config.PxRows, color.NRGBA{255, 255, 255, 255})
+	pxCanvas.PixelData = NewBlankImage(pxCanvas.PxCols, config.PxRows, color.NRGBA{128, 128, 128, 255})
 	pxCanvas.ExtendBaseWidget(pxCanvas)
 	return pxCanvas
 }
