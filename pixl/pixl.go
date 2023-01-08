@@ -23,9 +23,9 @@ func main() {
 	pixlCanvasConfig := apptype.PxCanvasConfig{
 		DrawingArea: fyne.NewSize(600, 600),
 		CanvasOffset: fyne.NewPos(20, 20),
-		PxRows: 10,
-		PxCols: 10,
-		PxSize: 30,
+		PxRows: 300,
+		PxCols: 300,
+		PxSize: 1,
 	}
 
 	pixlCanvas := pxcanvas.NewPxCanvas(&state, pixlCanvasConfig)

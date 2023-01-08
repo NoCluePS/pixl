@@ -6,9 +6,14 @@ import (
 )
 
 type PxCanvasRenderer struct {
-	pxCanvas *PxCanvas
-	canvasImage *canvas.Image
+	pxCanvas     *PxCanvas
+	canvasImage  *canvas.Image
 	canvasBorder []canvas.Line
+	canvasCursor []fyne.CanvasObject
+}
+
+func (renderer *PxCanvasRenderer) SetCursor(objects []fyne.CanvasObject) {
+	renderer.canvasCursor = objects
 }
 
 // Widget renderer implementation
@@ -21,7 +26,8 @@ func (renderer *PxCanvasRenderer) Objects() []fyne.CanvasObject {
 	for i := 0; i < len(renderer.canvasBorder); i++ {
 		objects = append(objects, &renderer.canvasBorder[i])
 	}
-	objects= append(objects, renderer.canvasImage)
+	objects = append(objects, renderer.canvasImage)
+	objects = append(objects, renderer.canvasCursor...)
 	return objects
 }
 
@@ -68,7 +74,6 @@ func (renderer *PxCanvasRenderer) LayoutBorder(size fyne.Size) {
 	right := &renderer.canvasBorder[2]
 	right.Position1 = fyne.NewPos(offset.X+imgWidth, offset.Y)
 	right.Position2 = fyne.NewPos(offset.X+imgWidth, offset.Y+imgHeight)
-
 
 	bottom := &renderer.canvasBorder[3]
 	bottom.Position1 = fyne.NewPos(offset.X, offset.Y+imgHeight)
